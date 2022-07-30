@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -35,4 +36,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.app-container {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 150px);
+  gap: 70px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-bottom: 300px;
 }

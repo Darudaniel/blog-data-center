@@ -1,20 +1,10 @@
 import '../styles/CreateEntry.css'
 import { useState } from 'react'
 import { initializeApp } from 'firebase/app';
-// import { } from 'firebase/firestore/lite';
 import { collection, addDoc, getFirestore, getDocs  } from "firebase/firestore";
+import firebaseConfig from '../firebase/firebaseConfig'
 
 const CreateEntry = () => {
-
-  const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
-    appId: process.env.REACT_APP_FIREBASE_APPID,
-    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID
-  };
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app)
@@ -58,6 +48,7 @@ const CreateEntry = () => {
 
   return(
     <>
+      <h2>Crear Entrada</h2>
       <form className="CreateEntry" onSubmit={handleSubmit} >
         <label htmlFor="title">
           Titulo
@@ -82,7 +73,7 @@ const CreateEntry = () => {
         />
         <br />
         <button className="success-button" type="submit">
-          SEND
+          Publicar
         </button>
       </form>
       <button type="submit" onClick={handleClickTest}>
