@@ -10,7 +10,13 @@ const CreateEntry = () => {
   const db = getFirestore(app)
 
   const [title, setTitle] = useState("")
-  const [content, setContent] = useState("")
+  const [img, setImg] = useState("")
+  const [opening, setOpening] = useState("")
+  const [firstSubHeader, setFirstSubHeader] = useState("")
+  const [firstContent, setFirstContent ] = useState("")
+  const [secondSubHeader, setSecondSubHeader] = useState("")
+  const [secondContent, setSecondContent] =useState("")
+
 
   const getPetition = async () => {
     const entriesCollection = collection(db, 'entries');
@@ -28,7 +34,12 @@ const CreateEntry = () => {
     e.preventDefault()
     const formData = {
       title,
-      content
+      img,
+      opening,
+      firstSubHeader,
+      firstContent,
+      secondSubHeader,
+      secondContent
     }
     try {
       const docRef = await addDoc(collection(db, "entries"), formData);
@@ -42,8 +53,28 @@ const CreateEntry = () => {
     setTitle(e.target.value)
   }
 
-  const handleChangeContent = (e) => {
-    setContent(e.target.value)
+  const handleChangeImg = (e) => {
+    setImg(e.target.value)
+  }
+
+  const handleChangeOpening = (e) => {
+    setOpening(e.target.value)
+  }
+
+  const handleChangeFirstSubHeader = (e) => {
+    setFirstSubHeader(e.target.value)
+  }
+
+  const handleChangeFirstContent = (e) => {
+    setFirstContent(e.target.value)
+  }
+
+  const handleChangeSecondSubHeader = (e) => {
+    setSecondSubHeader(e.target.value)
+  }
+
+  const handleChangeSecondContent = (e) => {
+    setSecondContent(e.target.value)
   }
 
   return(
@@ -61,17 +92,79 @@ const CreateEntry = () => {
           onChange={handleChangeTitle}
         />
         <br />
-        <label htmlFor="content">
-          Contenido
+
+        <label htmlFor="imgLink">
+          Img Link
         </label>
         <br />
         <input
-          id="content"
-          type="content" 
-          name="content"
-          onChange={handleChangeContent}
+          id="imgLink"
+          type="link" 
+          name="imgLink"
+          onChange={handleChangeImg}
         />
         <br />
+
+        <label htmlFor="opening">
+          Opening
+        </label>
+        <br />
+        <input
+          id="opening"
+          type="opening" 
+          name="opening"
+          onChange={handleChangeOpening}
+        />
+        <br />
+
+        <label htmlFor="firstSubHeader">
+          First Sub Header
+        </label>
+        <br />
+        <input
+          id="firstSubHeader"
+          type="subHeader" 
+          name="firstSubHeader"
+          onChange={handleChangeFirstSubHeader}
+        />
+        <br />
+
+        <label htmlFor="firstContent">
+          First Content
+        </label>
+        <br />
+        <input
+          id="firstContent"
+          type="content" 
+          name="firstContent"
+          onChange={handleChangeFirstContent}
+        />
+        <br />
+
+        <label htmlFor="secondSubHeader">
+          Second Sub Header
+        </label>
+        <br />
+        <input
+          id="secondSubHeader"
+          type="subHeader" 
+          name="secondSubHeader"
+          onChange={handleChangeSecondSubHeader}
+        />
+        <br />
+
+        <label htmlFor="secondContent">
+          Second Content
+        </label>
+        <br />
+        <input
+          id="secondContent"
+          type="content" 
+          name="secondContent"
+          onChange={handleChangeSecondContent}
+        />
+        <br />
+
         <button className="success-button" type="submit">
           Publicar
         </button>

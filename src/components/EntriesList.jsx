@@ -34,7 +34,12 @@ const EntriesList = () => {
         return (
           <div key={entry.id} className="entry">
             <h1>Title: {entry.title}</h1>
-            <h1>Content: {entry.content}</h1>
+            <img src={entry.img} alt="imagen relacionada con el articulo" />
+            <p>Opening: {entry.opening}</p>
+            <h2>First Sub Header: {entry.firstSubHeader}</h2>
+            <p>First Content: {entry.firstContent}</p>
+            <h2>Second Sub Header: {entry.secondSubHeader}</h2>
+            <p>Second Content: {entry.secondContent}</p>
             <button className="delete-button" onClick={() => {deleteEntry(entry.id)}}>Delete</button>
           </div>
         ) 
