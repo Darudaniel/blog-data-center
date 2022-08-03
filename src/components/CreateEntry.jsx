@@ -17,7 +17,6 @@ const CreateEntry = () => {
   const [secondSubHeader, setSecondSubHeader] = useState("")
   const [secondContent, setSecondContent] =useState("")
 
-
   const getPetition = async () => {
     const entriesCollection = collection(db, 'entries');
     const entrySnapshot = await getDocs(entriesCollection);
@@ -31,7 +30,17 @@ const CreateEntry = () => {
   }
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
+
+    const getRandomInt = (max) => {
+      const number = Math.floor(Math.random() * max);
+      const string = number.toString()
+      return string
+    }
+    
+    const entryId = getRandomInt(1000000)
+
     const formData = {
       title,
       img,
@@ -39,7 +48,8 @@ const CreateEntry = () => {
       firstSubHeader,
       firstContent,
       secondSubHeader,
-      secondContent
+      secondContent,
+      entryId
     }
     try {
       const docRef = await addDoc(collection(db, "entries"), formData);
