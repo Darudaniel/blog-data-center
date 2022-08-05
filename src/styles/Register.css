@@ -1,11 +1,8 @@
-.Login {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+.Register  {
+  width: 100vw;
 }
 
-.default-button {
+.google-auth-button {
   max-width: 300px;
   padding: 6px 10px;
   -webkit-border-radius: 2px 2px;
@@ -22,3 +19,4 @@
   -webkit-text-shadow: 0px 1px 1px rgba(255,255,255,1);
   line-height: 1;
 }
+

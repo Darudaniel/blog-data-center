@@ -10,14 +10,10 @@ function App() {
   return (
     <div className="App">
       <div className="app-container">
+        <img src={logo} className="App-logo" alt="logo" />
         <Register />
-        <img src={logo} className="App-logo" alt="logo" />
-        <img src={logo} className="App-logo" alt="logo" />
-        <img src={logo} className="App-logo" alt="logo" />
-        <img src={logo} className="App-logo" alt="logo" />
-        <Login />
         <CreateEntry />
-        <br />
+        <Login />
       </div>
       <EntriesList />
     </div>

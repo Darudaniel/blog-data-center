@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { auth, signInWithGoogle } from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import '../styles/Register.css'
 
 const Register = () => {
 
@@ -26,9 +27,9 @@ const Register = () => {
   }
 
   return(
-    <>
-      <h2>Register</h2>
-      <form className="register" onSubmit={handleSubmit} >
+    <div className='Register'>
+      {/* <h2>Register</h2> */}
+      {/* <form className="register" onSubmit={handleSubmit} >
         <label htmlFor="email">
           Email
         </label>
@@ -54,11 +55,11 @@ const Register = () => {
         <button className="success-button" type="submit">
           Registrar
         </button>
-      </form>
-      <button onClick={signInWithGoogle}>
+      </form> */}
+      <button onClick={signInWithGoogle} className="google-auth-button">
         Sign in with google
       </button>
-    </>
+    </div>
   )
 }
 

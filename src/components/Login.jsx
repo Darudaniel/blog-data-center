@@ -44,15 +44,15 @@ const Login = () => {
   return (
     <>
       <h2>Login</h2>
-      <form className="login" onSubmit={login}>
+      {/* <form className="login" onSubmit={login}>
         <input placeholder="Email..." onChange={handleChangeEmail} />
         <br />
         <input placeholder="Password..." onChange={handleChangePassword}/>
         <br />
         <button>Login</button>
-      </form>
+      </form> */}
       <div className='Login'>     
-        <button onClick={logout}>Sign Out</button>
+        <button className='default-button' onClick={logout}>Sign Out</button>
         <h4>User logged:</h4>
         {user?user.email:"Not Logged In"}
         <h2>Logeado por google</h2>

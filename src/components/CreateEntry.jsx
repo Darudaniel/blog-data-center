@@ -88,7 +88,7 @@ const CreateEntry = () => {
   }
 
   return(
-    <>
+    <div clasName="CreateEntry-container">
       <h2>Crear Entrada</h2>
       <form className="CreateEntry" onSubmit={handleSubmit} >
         <label htmlFor="title">
@@ -100,6 +100,7 @@ const CreateEntry = () => {
           type="title" 
           name="title"
           onChange={handleChangeTitle}
+          className="short-input inputs"
         />
         <br />
 
@@ -112,6 +113,7 @@ const CreateEntry = () => {
           type="link" 
           name="imgLink"
           onChange={handleChangeImg}
+          className="short-input inputs"
         />
         <br />
 
@@ -124,6 +126,7 @@ const CreateEntry = () => {
           type="opening" 
           name="opening"
           onChange={handleChangeOpening}
+          className="long-input inputs"
         />
         <br />
 
@@ -136,6 +139,7 @@ const CreateEntry = () => {
           type="subHeader" 
           name="firstSubHeader"
           onChange={handleChangeFirstSubHeader}
+          className="short-input inputs"
         />
         <br />
 
@@ -148,6 +152,7 @@ const CreateEntry = () => {
           type="content" 
           name="firstContent"
           onChange={handleChangeFirstContent}
+          className='long-input inputs'
         />
         <br />
 
@@ -160,6 +165,7 @@ const CreateEntry = () => {
           type="subHeader" 
           name="secondSubHeader"
           onChange={handleChangeSecondSubHeader}
+          className="short-input inputs"
         />
         <br />
 
@@ -172,6 +178,7 @@ const CreateEntry = () => {
           type="content" 
           name="secondContent"
           onChange={handleChangeSecondContent}
+          className='long-input inputs'
         />
         <br />
 
@@ -179,10 +186,10 @@ const CreateEntry = () => {
           Publicar
         </button>
       </form>
-      <button type="submit" onClick={handleClickTest}>
-      Test getting entries
+      <button type="submit" onClick={handleClickTest} className="default-button">
+        Test getting entries
       </button>
-    </>
+    </div>
   )
 }
 
