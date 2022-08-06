@@ -121,9 +121,9 @@ const CreateEntry = () => {
           Opening
         </label>
         <br />
-        <input
+        <textarea
           id="opening"
-          type="opening" 
+          type="text" 
           name="opening"
           onChange={handleChangeOpening}
           className="long-input inputs"
@@ -147,9 +147,9 @@ const CreateEntry = () => {
           First Content
         </label>
         <br />
-        <input
+        <textarea
           id="firstContent"
-          type="content" 
+          type="text" 
           name="firstContent"
           onChange={handleChangeFirstContent}
           className='long-input inputs'
@@ -173,9 +173,9 @@ const CreateEntry = () => {
           Second Content
         </label>
         <br />
-        <input
+        <textarea
           id="secondContent"
-          type="content" 
+          type="text" 
           name="secondContent"
           onChange={handleChangeSecondContent}
           className='long-input inputs'
