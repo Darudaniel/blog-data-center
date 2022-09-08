@@ -13,6 +13,7 @@ const EntriesList = () => {
       const entryDoc = doc(db, "entries", id)
       await deleteDoc(entryDoc)
       console.log(`entrada ${id} ha sido eliminada`)
+      alert(`entrada identificada con el id:${id} ha sido eliminada`)
     } catch (error) {
       console.log(error)
     }
@@ -34,12 +35,13 @@ const EntriesList = () => {
         return (
           <div key={entry.id} className="entry">
             <h1>Title: {entry.title}</h1>
-            <img src={entry.img} alt="imagen relacionada con el articulo" />
+            <img className="entry-img" src={entry.img} alt="imagen relacionada con el articulo" />
             <p>Opening: {entry.opening}</p>
             <h2>First Sub Header: {entry.firstSubHeader}</h2>
             <p>First Content: {entry.firstContent}</p>
             <h2>Second Sub Header: {entry.secondSubHeader}</h2>
             <p>Second Content: {entry.secondContent}</p>
+            <p>Author: {entry.author}</p>
             <button className="delete-button" onClick={() => {deleteEntry(entry.id)}}>Delete</button>
           </div>
         ) 

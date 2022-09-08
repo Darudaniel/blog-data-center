@@ -16,6 +16,7 @@ const CreateEntry = () => {
   const [firstContent, setFirstContent ] = useState("")
   const [secondSubHeader, setSecondSubHeader] = useState("")
   const [secondContent, setSecondContent] =useState("")
+  const [author, setAuthor] = useState("")
 
   const getPetition = async () => {
     const entriesCollection = collection(db, 'entries');
@@ -49,13 +50,16 @@ const CreateEntry = () => {
       firstContent,
       secondSubHeader,
       secondContent,
+      author,
       entryId
     }
     try {
       const docRef = await addDoc(collection(db, "entries"), formData);
       console.log("Document written with ID: ", docRef.id);
+      alert('Entrada publicada con exito')
     } catch (e) {
       console.error("Error adding document: ", e);
+      alert('Ha ocurrido un error en la publicacion de la entrada. Revisa tu conexion a internet.')
     }
   }
 
@@ -85,6 +89,10 @@ const CreateEntry = () => {
 
   const handleChangeSecondContent = (e) => {
     setSecondContent(e.target.value)
+  }
+
+  const handleChangeAuthor = (e) => {
+    setAuthor(e.target.value)
   }
 
   return(
@@ -179,6 +187,19 @@ const CreateEntry = () => {
           name="secondContent"
           onChange={handleChangeSecondContent}
           className='long-input inputs'
+        />
+        <br />
+
+        <label htmlFor="author">
+          Author
+        </label>
+        <br />
+        <textarea
+          id="author"
+          type="text" 
+          name="author"
+          onChange={handleChangeAuthor}
+          className='short-input inputs'
         />
         <br />
 
