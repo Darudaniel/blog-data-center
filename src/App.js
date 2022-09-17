@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <div className="app-container">
         <img src={logo} className="App-logo" alt="logo" />
-        <Register />
         <CreateEntry />
-        <CreateLead />
         <Login />
+        <Register />
+        {/* <CreateLead /> */}
       </div>
       <EntriesList />
     </div>

@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <>
-      <h2>Login</h2>
+      {/* <h2>Login</h2> */}
       {/* <form className="login" onSubmit={login}>
         <input placeholder="Email..." onChange={handleChangeEmail} />
         <br />
@@ -52,13 +52,13 @@ const Login = () => {
         <button>Login</button>
       </form> */}
       <div className='Login'>     
-        <button className='default-button' onClick={logout}>Sign Out</button>
         <h4>User logged:</h4>
-        {user?user.email:"Not Logged In"}
-        <h2>Logeado por google</h2>
+        {/* {user?user.email:"Not Logged In"} */}
+        {/* <h2>Logeado por google</h2> */}
         <p>{localStorage.getItem("name")}</p>
-        <p>{localStorage.getItem("email")}</p>
-        <img src={localStorage.getItem("profilePic")} alt="Foto de perfil de google" />
+        {/* <p>{localStorage.getItem("email")}</p> */}
+        {/* <img src={localStorage.getItem("profilePic")} alt="Foto de perfil de google" /> */}
+        <button className='default-button' onClick={logout}>Sign Out</button>
       </div>
     </>
   )

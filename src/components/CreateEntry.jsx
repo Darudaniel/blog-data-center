@@ -97,10 +97,10 @@ const CreateEntry = () => {
 
   return(
     <div clasName="CreateEntry-container">
-      <h2>Crear Entrada</h2>
+      <h2>Create Entry</h2>
       <form className="CreateEntry" onSubmit={handleSubmit} >
         <label htmlFor="title">
-          Titulo
+          Title
         </label>
         <br />
         <input
@@ -204,9 +204,10 @@ const CreateEntry = () => {
         <br />
 
         <button className="success-button" type="submit">
-          Publicar
+          PUBLISH
         </button>
       </form>
+      <br />
       <button type="submit" onClick={handleClickTest} className="default-button">
         Test getting entries
       </button>
