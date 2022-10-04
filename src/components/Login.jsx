@@ -1,45 +1,39 @@
-import { useEffect, useState } from 'react'
 import '../styles/Login.css'
-import { auth } from "../firebase"
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { logout } from "../firebase"
 
 const Login = () => {
 
-  const [loginEmail, setLoginEmail] = useState("")
-  const [loginPassword, setLoginPassword] = useState("")
+  // const [loginEmail, setLoginEmail] = useState("")
+  // const [loginPassword, setLoginPassword] = useState("")
 
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
 
-  const handleChangeEmail = (e) => {
-    setLoginEmail(e.target.value)
-  }
+  // const handleChangeEmail = (e) => {
+  //   setLoginEmail(e.target.value)
+  // }
 
-  const handleChangePassword = (e) => {
-    setLoginPassword(e.target.value)
-  }
+  // const handleChangePassword = (e) => {
+  //   setLoginPassword(e.target.value)
+  // }
 
   
 
-  const login = async (e) => {
-    e.preventDefault()
-    try {
-      const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-      console.log('usuario logeado con exito')
-      console.log(user)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  // const login = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+  //     console.log('usuario logeado con exito')
+  //     console.log(user)
+  //   } catch (error) {
+  //     console.log(error.message)
+  //   }
+  // }
 
-  const logout = async () => {
-    await signOut(auth)
-  }
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-    })
-  }, [])
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser)
+  //   })
+  // }, [])
 
   return (
     <>
