@@ -36,6 +36,7 @@
 
 .entry-img {
   max-width: 200px;
+  border-radius: 10px;
 }
 
 .delete-button {
@@ -47,4 +48,22 @@
   border-radius: 5px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.411);
   color: white;
+}
+
+@media only screen and (min-width: 767px) {
+
+  .entry {
+    max-width: 700px;
+    padding: 10px 130px 10px 30px;
+    margin: 40px 0;
+  }
+
+  .delete-button {
+    max-width: 300px;
+    margin: 20px 0;
+  }
+
+  .entry-img {
+    max-width: 300px;
+  }
 }
