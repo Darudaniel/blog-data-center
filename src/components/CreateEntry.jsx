@@ -209,7 +209,7 @@ const CreateEntry = () => {
       </form>
       <br />
       <button type="submit" onClick={handleClickTest} className="default-button">
-        Test getting entries
+        Update entries
       </button>
     </div>
   )

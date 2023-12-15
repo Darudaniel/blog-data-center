@@ -6,8 +6,7 @@ import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore'
 const EntriesList = () => {
 
   const [entries, setEntries] = useState([])
-  const entriesCollectionRef = collection(db, "entries")
-
+  
   const deleteEntry = async (id) => {
     try {
       const entryDoc = doc(db, "entries", id)
@@ -18,8 +17,9 @@ const EntriesList = () => {
       console.log(error)
     }
   }
-
+  
   useEffect(() => {
+    const entriesCollectionRef = collection(db, "entries")
     const getEntries = async () => {
       const data = await getDocs(entriesCollectionRef)
       setEntries(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -30,7 +30,7 @@ const EntriesList = () => {
 
   return (
     <div className="entries">
-      <h1>Entries</h1>
+      <h1 className="main-title">Entries</h1>
       { entries.map((entry) => {
         return (
           <div key={entry.id} className="entry">
@@ -41,7 +41,12 @@ const EntriesList = () => {
             <p>First Content: {entry.firstContent}</p>
             <h2>Second Sub Header: {entry.secondSubHeader}</h2>
             <p>Second Content: {entry.secondContent}</p>
-            <p>Author: {entry.author}</p>
+            {
+              entry.author ?
+                <p>Author: {entry.author}</p>
+                :
+                <p>Author: Anónimo</p>
+            }
             <button className="delete-button" onClick={() => {deleteEntry(entry.id)}}>Delete</button>
           </div>
         ) 
