@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { initializeApp } from 'firebase/app';
 import { collection, addDoc, getFirestore, getDocs  } from "firebase/firestore";
 import firebaseConfig from '../firebase/firebaseConfig'
+import EditorComponent from './EditorComponent';
 
 const CreateEntry = () => {
 
@@ -11,12 +12,10 @@ const CreateEntry = () => {
 
   const [title, setTitle] = useState("")
   const [img, setImg] = useState("")
-  const [opening, setOpening] = useState("")
-  const [firstSubHeader, setFirstSubHeader] = useState("")
-  const [firstContent, setFirstContent ] = useState("")
-  const [secondSubHeader, setSecondSubHeader] = useState("")
-  const [secondContent, setSecondContent] =useState("")
+  const [editorContent, setEditorContent] = useState("")
   const [author, setAuthor] = useState("")
+  const [opening, setOpening] = useState("")
+  const [alt, setAlt] = useState("")
 
   const getPetition = async () => {
     const entriesCollection = collection(db, 'entries');
@@ -28,6 +27,30 @@ const CreateEntry = () => {
   const handleClickTest = async () => {
     const listaDeEntradas = await getPetition()
     console.log(listaDeEntradas)
+  }
+
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value)
+  }
+  
+  const handleChangeImg = (e) => {
+    setImg(e.target.value)
+  }
+
+  const handleChangeAlt = (e) => {
+    setAlt(e.target.value)
+  }
+  
+  const handleChangeOpening = (e) => {
+    setOpening(e.target.value)
+  }
+
+  const handleEditorText = (editorText) => {
+    setEditorContent(editorText)
+  }
+
+  const handleChangeAuthor = (e) => {
+    setAuthor(e.target.value)
   }
 
   const handleSubmit = async (e) => {
@@ -45,17 +68,17 @@ const CreateEntry = () => {
     const formData = {
       title,
       img,
+      alt,
       opening,
-      firstSubHeader,
-      firstContent,
-      secondSubHeader,
-      secondContent,
+      editorContent,
       author,
-      entryId
+      entryId,
     }
+
     try {
       const docRef = await addDoc(collection(db, "entries"), formData);
       console.log("Document written with ID: ", docRef.id);
+      console.log(formData)
       alert('Entrada publicada con exito')
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -63,40 +86,9 @@ const CreateEntry = () => {
     }
   }
 
-  const handleChangeTitle = (e) => {
-    setTitle(e.target.value)
-  }
-
-  const handleChangeImg = (e) => {
-    setImg(e.target.value)
-  }
-
-  const handleChangeOpening = (e) => {
-    setOpening(e.target.value)
-  }
-
-  const handleChangeFirstSubHeader = (e) => {
-    setFirstSubHeader(e.target.value)
-  }
-
-  const handleChangeFirstContent = (e) => {
-    setFirstContent(e.target.value)
-  }
-
-  const handleChangeSecondSubHeader = (e) => {
-    setSecondSubHeader(e.target.value)
-  }
-
-  const handleChangeSecondContent = (e) => {
-    setSecondContent(e.target.value)
-  }
-
-  const handleChangeAuthor = (e) => {
-    setAuthor(e.target.value)
-  }
 
   return(
-    <div clasName="CreateEntry-container">
+    <div className="CreateEntry-container">
       <h2>Create Entry</h2>
       <form className="CreateEntry" onSubmit={handleSubmit} >
         <label htmlFor="title">
@@ -125,6 +117,19 @@ const CreateEntry = () => {
         />
         <br />
 
+        <label htmlFor="imgLink">
+          Img Alt
+        </label>
+        <br />
+        <input
+          id="imgAlt"
+          type="text" 
+          name="imgAlt"
+          onChange={handleChangeAlt}
+          className="short-input inputs"
+        />
+        <br />
+
         <label htmlFor="opening">
           Opening
         </label>
@@ -138,56 +143,10 @@ const CreateEntry = () => {
         />
         <br />
 
-        <label htmlFor="firstSubHeader">
-          First Sub Header
-        </label>
-        <br />
-        <input
-          id="firstSubHeader"
-          type="subHeader" 
-          name="firstSubHeader"
-          onChange={handleChangeFirstSubHeader}
-          className="short-input inputs"
-        />
-        <br />
+        <p>Content</p>
 
-        <label htmlFor="firstContent">
-          First Content
-        </label>
-        <br />
-        <textarea
-          id="firstContent"
-          type="text" 
-          name="firstContent"
-          onChange={handleChangeFirstContent}
-          className='long-input inputs'
-        />
-        <br />
-
-        <label htmlFor="secondSubHeader">
-          Second Sub Header
-        </label>
-        <br />
-        <input
-          id="secondSubHeader"
-          type="subHeader" 
-          name="secondSubHeader"
-          onChange={handleChangeSecondSubHeader}
-          className="short-input inputs"
-        />
-        <br />
-
-        <label htmlFor="secondContent">
-          Second Content
-        </label>
-        <br />
-        <textarea
-          id="secondContent"
-          type="text" 
-          name="secondContent"
-          onChange={handleChangeSecondContent}
-          className='long-input inputs'
-        />
+        <EditorComponent onInputChange={handleEditorText} />
+        
         <br />
 
         <label htmlFor="author">
@@ -201,7 +160,6 @@ const CreateEntry = () => {
           onChange={handleChangeAuthor}
           className='short-input inputs'
         />
-        <br />
 
         <button className="success-button" type="submit">
           PUBLISH

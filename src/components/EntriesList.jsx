@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import '../styles/EntriesList.css'
 import { db } from "../firebase"
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore'
+import ReactMarkdown from 'react-markdown';
 
 const EntriesList = () => {
 
@@ -31,26 +32,24 @@ const EntriesList = () => {
   return (
     <div className="entries">
       <h1 className="main-title">Entries</h1>
-      { entries.map((entry) => {
-        return (
-          <div key={entry.id} className="entry">
-            <h1>Title: {entry.title}</h1>
-            <img className="entry-img" src={entry.img} alt="imagen relacionada con el articulo" />
-            <p>Opening: {entry.opening}</p>
-            <h2>First Sub Header: {entry.firstSubHeader}</h2>
-            <p>First Content: {entry.firstContent}</p>
-            <h2>Second Sub Header: {entry.secondSubHeader}</h2>
-            <p>Second Content: {entry.secondContent}</p>
-            {
-              entry.author ?
-                <p>Author: {entry.author}</p>
-                :
-                <p>Author: Anónimo</p>
-            }
-            <button className="delete-button" onClick={() => {deleteEntry(entry.id)}}>Delete</button>
-          </div>
-        ) 
-      })} 
+      { entries.map(({id, title, img, opening, editorContent, alt, author}) => {
+          return (
+            <div key={id} className="entry">
+              <h1>Title: {title}</h1>
+              <img className="entry-img" src={img} alt={alt} />
+              <p>Opening: {opening}</p>
+              <ReactMarkdown>{editorContent}</ReactMarkdown>
+              {
+                author ?
+                  <p>Author: {author}</p>
+                  :
+                  <p>Author: Anónimo</p>
+              }
+              <button className="delete-button" onClick={() => {deleteEntry(id)}}>Delete</button>
+            </div>
+          ) 
+        })
+      } 
     </div>
   ) 
 }
