@@ -17,6 +17,7 @@ const CreateEntry = () => {
   const [opening, setOpening] = useState("")
   const [alt, setAlt] = useState("")
 
+
   const getPetition = async () => {
     const entriesCollection = collection(db, 'entries');
     const entrySnapshot = await getDocs(entriesCollection);
@@ -65,6 +66,8 @@ const CreateEntry = () => {
     
     const entryId = getRandomInt(1000000)
 
+    const createdAt = new Date()
+
     const formData = {
       title,
       img,
@@ -73,6 +76,7 @@ const CreateEntry = () => {
       editorContent,
       author,
       entryId,
+      createdAt
     }
 
     try {

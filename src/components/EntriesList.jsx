@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import '../styles/EntriesList.css'
 import { db } from "../firebase"
-import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore'
+import { collection, getDocs, doc, deleteDoc, query, orderBy } from 'firebase/firestore'
 import ReactMarkdown from 'react-markdown';
 
 const EntriesList = () => {
@@ -22,7 +22,8 @@ const EntriesList = () => {
   useEffect(() => {
     const entriesCollectionRef = collection(db, "entries")
     const getEntries = async () => {
-      const data = await getDocs(entriesCollectionRef)
+      const q = query(entriesCollectionRef, orderBy("createdAt", "desc"));
+      const data = await getDocs(q)
       setEntries(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
 
