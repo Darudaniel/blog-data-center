@@ -1,5 +1,10 @@
 .editor-component-container {
-  min-width: 85vw;
+  width: 82vw;
+  min-width: 260px;
+}
+
+.ql-editor {
+  font-size: 1.8rem; /* Cambia 'medium' por el tamaño que prefieras como predeterminado */
 }
 
 @media only screen and (min-width: 767px) {
@@ -7,3 +12,5 @@
     min-width: 60vw;
   }
 }
+
+
